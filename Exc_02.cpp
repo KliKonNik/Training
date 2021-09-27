@@ -53,6 +53,9 @@ class String
 	void Run2();
 	void Run3();
 	void Run4();
+	void Run5();
+	void Run6();
+	void Run7();
 
 public:
 	String()
@@ -79,6 +82,8 @@ public:
 	const char* Reverse();
 	bool Insert(char, int);
 	int ReplaceChar(char, char);
+	bool DeleteLetter(int);
+	int DeleteChar(char);
 	int Length() const;
 	void Run(int);
 
@@ -152,8 +157,51 @@ void String::Run4()
 
 //---------------------------------------------------------
 //  5.	Дана строка символов. Удалить каждый символ "*", подсчитать количество удалений.
+void String::Run5()
+{
+	 cout << "\nDeleted: " << DeleteChar('*');
+}
+
+//---------------------------------------------------------
 //  6.	Дана строка символов. Если длина строки четная, заменить в ней все точки на запятые в первой половине строке, иначе удалить центральный символ.
+void String::Run6()
+{
+	if (Length() % 2)
+	{
+		DeleteLetter(Length() / 2);
+	}
+	else
+	{
+		for (int i = 0, len = Length() / 2; i < len; i++)
+		{
+			if (m_Str[i] == '.')
+			{
+				m_Str[i] = ',';
+			}
+		}
+	}
+}
+
+//---------------------------------------------------------
 //  7.	Дана строка символов. Заменить в ней все рядом стоящие одинаковые символы на символ "*".
+void String::Run7()
+{
+	int j{ 0 };
+
+	for (int i = 0, len{ Length() }; i < len - 1; i++)
+	{
+		if ((m_Str[i] != '*') && (m_Str[i] == m_Str[i + 1]))
+		{
+			j = i + 1;
+			while (m_Str[i] == m_Str[j])
+				j++;
+			for (int k = i; k < j; k++) m_Str[k] = '*';
+			i += (j - i);
+		}
+	}
+}
+
+//---------------------------------------------------------
 //  8.	Дана строка символов. Подсчитать, сколько раз в строку входит последний символ, и заменить все пробелы на этот символ.
 //  9.	Дана строка символов. Удалить из нее все парные вхождения символов.Подсчитать количество удалений.
 // 10.	Дана строка символов. Удалить первую 1 / 3 часть строки, если ее длина кратна 3, в противном случае в начало строки вставить символ "+".
@@ -185,7 +233,7 @@ String::String(const String& obj)
 
 void String::Set(const char* str)
 {
-	int i = 0;
+	int i{ 0 };
 	
 	while ((i < (g_c_MaxSize - 1)) && str[i] != '\0')
 	{
@@ -202,7 +250,7 @@ const char* String::Reverse()
 {
 	char* revstr = new char[g_c_MaxSize];
 	
-	for (int i = 0, len = Length(); i < len; i++)
+	for (int i = 0, len{ Length() }; i < len; i++)
 		revstr[len - i - 1] = m_Str[i];
 
 	revstr[Length()] = '\0';
@@ -224,7 +272,7 @@ bool String::Insert(char ch, int ind)
 		return false;
 	}
 	m_Str[Length() + 1] = '\0';
-	for (int i = Length() - 1; i >= ind; i--)
+	for (int i{ Length() - 1}; i >= ind; i--)
 	{
 		m_Str[i + 1] = m_Str[i];
 	}
@@ -238,9 +286,9 @@ bool String::Insert(char ch, int ind)
 
 int String::ReplaceChar(char what, char replaceOn)
 {
-	int changeCounter = 0;
+	int changeCounter{ 0 };
 
-	for (int i = 0, len = Length(); i < len; i++)
+	for (int i = 0, len{ Length() }; i < len; i++)
 	{
 		if (m_Str[i] == what)
 		{
@@ -250,6 +298,44 @@ int String::ReplaceChar(char what, char replaceOn)
 	}
 
 	return changeCounter;
+}
+
+//---------------------------------------------------------
+
+bool String::DeleteLetter(int ind)
+{
+	if ((ind > Length()) || (Length() <= 0))
+	{
+		cout << "\n\n\tERROR: DeleteLetter! Out of bound!!!\n\n" << endl;
+		return false;
+	}
+	
+	for (int i = ind, len{ Length() }; i < len; i++)
+		m_Str[i] = m_Str[i + 1];
+
+	return true;
+}
+
+//---------------------------------------------------------
+
+int String::DeleteChar(char ch)
+{
+	int delCounter{ 0 };
+	unsigned int i{ 0 };
+	int len{ Length() };
+
+	while (m_Str[i] != '\0')
+	{
+		if (m_Str[i] == ch)
+		{
+			DeleteLetter(i);
+			i--;
+			delCounter++;
+		}
+		i++;
+	}
+
+	return delCounter;
 }
 
 //---------------------------------------------------------
@@ -275,6 +361,10 @@ void String::Run(int task)
 	case 2:Run2(); break;
 	case 3:Run3(); break;
 	case 4:Run4(); break;
+	case 5:Run5(); break;
+	case 6:Run6(); break;
+	case 7:Run7(); break;
+
 	default:
 		cout << "\n\tERROR! Solve of the task #" << task << " is not found." << endl;
 	}
