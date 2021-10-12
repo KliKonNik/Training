@@ -727,20 +727,20 @@ void Vector<T>::Set(bool rndset)
 {
 	if (rndset)
 	{
-			for (int i{ 0 }; i < m_Size; i++)
+		for (int i{ 0 }; i < m_Size; i++)
+		{
+			m_Vect[i] = static_cast<T>(rand() % 100);
+			if ((typeid(T) == typeid(float)) || (typeid(T) == typeid(double)) || (typeid(T) == typeid(long double)))
 			{
-				m_Vect[i] = static_cast<T>(rand() % 100);
-				if ((typeid(T) == typeid(float)) || (typeid(T) == typeid(double)) || (typeid(T) == typeid(long double)))
-				{
-					m_Vect[i] += static_cast<T>(rand() % 100) / 100;
-				}
-				if (!((typeid(T) == typeid(unsigned short int)) || (typeid(T) == typeid(unsigned int)) || (typeid(T) == typeid(unsigned long int)) || (typeid(T) == typeid(unsigned long long int))))
-				{
-					m_Vect[i] *= ((rand() % 2) ? 1 : -1);
-				}
-				m_Vect[i] *= ((rand() % 5) ? 1 : 0);
+				m_Vect[i] += static_cast<T>(rand() % 100) / 100;
 			}
+			if (!((typeid(T) == typeid(unsigned short int)) || (typeid(T) == typeid(unsigned int)) || (typeid(T) == typeid(unsigned long int)) || (typeid(T) == typeid(unsigned long long int))))
+			{
+				m_Vect[i] *= ((rand() % 2) ? 1 : -1);
+			}
+			m_Vect[i] *= ((rand() % 5) ? 1 : 0);
 		}
+	}
 	else
 	{
 		cout << "Enter " << m_Size << ((m_Size > 1) ? " elements " : " element ") << " of type \'" << typeid(T).name() << '\''
@@ -1057,51 +1057,51 @@ ostream& operator<<(ostream& ostrm, const Vector<U>& obj)
 
 //---------------------------------------------------------
 
-int main()
-{
-	char answer{ 'N' };
-	int choice{ 4 };
-	Vector<int> v1;
-	Vector<float> v2(10);
-
-	cout << "Autofill Vector #1. ";
-	v1.Set(true);
-	
-	cout << "\nAutofill Vector #2. ";
-	v2.Set(true);
-
-	system("cls");
-
-	cout << "\nVector #1 before:\n" << v1 << endl;
-	
-	cout << "Minimum: " << v1.Min() << endl;
-	cout << "Maximum: " << v1.Max() << endl;
-	cout << "Average: " << v1.Average() << endl;
-
-	v1.Sort();
-	cout << "\nVector #1 sorted by grow up:\n" << v1 << endl;
-	v1.Sort(false);
-	cout << "\nVector #1 sorted by grow down:\n" << v1 << endl;
-
-	system("pause");
-
-	cout << setiosflags(ios_base::fixed) << setprecision(2);
-	do
-	{
-		system("cls");
-
-		cout << "Which proccess do you want to test (1-20): ";
-		cin >> choice;
-		cin.ignore(256, '\n');
-		cout << "Vector #2 before:\n" << v2 << endl;
-		v2.Run(choice);
-		cout << "\nVector #2 after:\n" << v2 << endl;
-
-		cout << "\nOnce more? (y/n): ";
-		cin >> answer;
-		cin.ignore(256, '\n');
-	} while (toupper(answer) != 'N');
-
-	cout << endl;
-	return 0;
-}
+//int main()
+//{
+//	char answer{ 'N' };
+//	int choice{ 4 };
+//	Vector<int> v1;
+//	Vector<float> v2(10);
+//
+//	cout << "Autofill Vector #1. ";
+//	v1.Set(true);
+//	
+//	cout << "\nAutofill Vector #2. ";
+//	v2.Set(true);
+//
+//	system("cls");
+//
+//	cout << "\nVector #1 before:\n" << v1 << endl;
+//	
+//	cout << "Minimum: " << v1.Min() << endl;
+//	cout << "Maximum: " << v1.Max() << endl;
+//	cout << "Average: " << v1.Average() << endl;
+//
+//	v1.Sort();
+//	cout << "\nVector #1 sorted by grow up:\n" << v1 << endl;
+//	v1.Sort(false);
+//	cout << "\nVector #1 sorted by grow down:\n" << v1 << endl;
+//
+//	system("pause");
+//
+//	cout << setiosflags(ios_base::fixed) << setprecision(2);
+//	do
+//	{
+//		system("cls");
+//
+//		cout << "Which proccess do you want to test (1-20): ";
+//		cin >> choice;
+//		cin.ignore(256, '\n');
+//		cout << "Vector #2 before:\n" << v2 << endl;
+//		v2.Run(choice);
+//		cout << "\nVector #2 after:\n" << v2 << endl;
+//
+//		cout << "\nOnce more? (y/n): ";
+//		cin >> answer;
+//		cin.ignore(256, '\n');
+//	} while (toupper(answer) != 'N');
+//
+//	cout << endl;
+//	return 0;
+//}
