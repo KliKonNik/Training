@@ -149,21 +149,77 @@ T Array<T>::Run1() const
 template<typename T>
 int Array<T>::Run2() const
 {
-	return 0;
+	int result{ 0 };
+	bool solved{ false };
+
+	for (int i{ 0 }; i < m_Rows; i++)
+	{
+		if (m_Array[i]->Min(true) == 0)
+		{
+			result++;
+			solved = true;
+		}
+	}
+
+	if (!solved)
+	{
+		cout << "\nNo Rows with zero values found!" << endl;
+	}
+
+	return result;
 }
 
 //		03. Определить номер первой из строк, не содержащих ни одного положительного элемента
 template<typename T>
 int Array<T>::Run3() const
 {
-	return 0;
+	int result{ 0 };
+	bool solved{ false };
+
+	for (int i{ 0 }; i < m_Rows; i++)
+	{
+		if (m_Array[i]->Max() <= 0)
+		{
+			result = i + 1;
+			solved = true;
+			break;
+		}
+	}
+
+	if (!solved)
+	{
+		cout << "\nNo Rows with non-positive values found!" << endl;
+	}
+
+	return result;
 }
 
 //		04. Определить сумму элементов в тех столбцах, которые содержат хотя бы один положительный элемент
 template<typename T>
 T Array<T>::Run4() const
 {
-	return T();
+//
+//	T result{ 0 };
+//	bool solved{ false };
+//
+//	for (int i{ 0 }; i < m_Rows; i++)
+//	{
+//		if (m_Array[i]->Min() >= 0)
+//		{
+//			for (int j{ 0 }; j < m_Columns; j++)
+//				result += (*this)[i][j];
+//			solved = true;
+//		}
+//	}
+//
+//	if (!solved)
+//	{
+//		cout << "\nProccessing rows wasn't found!" << endl;
+//	}
+//
+//	return result;
+//	!!!!!!!
+	return 0;
 }
 
 //		05. Определить номер первого из столбцов, содержащих хотя бы один нулевой элемент
@@ -275,7 +331,31 @@ int Array<T>::Run19() const
 template<typename T>
 T Array<T>::Run20() const
 {
-	return T();
+	T result{ 1 };
+	bool solved{ false };
+
+	if (m_Rows == m_Columns)
+	{
+		for (int i{ 1 }; i < m_Rows; i++)
+		{
+			for (int j{ 0 }; j < i; j++)
+			{
+				if ((*m_Array[i])[j] < 0)
+				{
+					result = result * (*m_Array[i])[j];
+					cout << "\n" << (*m_Array[i])[j] << '\n';
+					solved = true;
+				}
+			}
+		}
+	}
+
+	if (!solved)
+	{
+		cout << "\nNo Rows with non-positive values found!" << endl;
+	}
+
+	return result;
 }
 
 //---------------------------------------------------------
