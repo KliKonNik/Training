@@ -21,6 +21,7 @@ class Vehicle
 {
 	static bool m_Tracking;
 public:
+	Vehicle();
 	virtual ~Vehicle();
 	virtual string WhoAmI() const = 0;
 	virtual void Display() const = 0;

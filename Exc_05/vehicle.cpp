@@ -5,6 +5,14 @@
 #include "vehicle.h"
 // Class Vehicle definition--------------------------------
 
+Vehicle::Vehicle()
+{
+	if (GetTracking())
+		cout << "\n\tConstructor of Vehicle!" << endl;
+}
+
+//---------------------------------------------------------
+
 Vehicle::~Vehicle()
 {
 	if(GetTracking())
@@ -96,8 +104,8 @@ void Automobile::Display() const
 	switch (m_EngineType)
 	{
 	case g_en_EngineType::DIESEL: cout << "diesel"; break;
-	case g_en_EngineType::GAS: cout << "diesel"; break;
-	case g_en_EngineType::PETROL: cout << "diesel"; break;
+	case g_en_EngineType::GAS: cout << "gas"; break;
+	case g_en_EngineType::PETROL: cout << "petrol"; break;
 	default:
 		cout << "no data";
 	}

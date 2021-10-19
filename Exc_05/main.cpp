@@ -18,12 +18,12 @@ using std::vector;
 
 //Consts---------------------------------------------------
 
-constexpr int g_c_MaxSize = 16;
-bool Vehicle::m_Tracking = (g_c_MaxSize <= 4)? true : false;
+constexpr int g_c_MaxSize = 4;									// number of element
+bool Vehicle::m_Tracking = (g_c_MaxSize <= 4)? true : false;	// will it be tracking constructor and destructor? (if number of elements is no more 4 then YES) 
 
 //---------------------------------------------------------
 
-g_en_EngineType getEngineType(bool mod)
+g_en_EngineType getEngineType(bool mod)							// Engine type for all vehicles
 {
 	int mode = ((mod) ? 2 : 0) + rand() % 3;
 	switch (mode)
@@ -39,15 +39,15 @@ g_en_EngineType getEngineType(bool mod)
 
 int main()
 {
-	vector<Vehicle*> vVeh;
+	vector<Vehicle*> vVeh;							// there will be some vehicles
 	
 	srand(static_cast<unsigned>(time(0)));
 
-	auto random = [](int n) {
+	auto random = [](int n) {						// lambda to random value between n and 2*n - 1
 		return (n + (rand() % n));
 	};
 
-	for (int i{ 0 }; i < g_c_MaxSize; i++)
+	for (int i{ 0 }; i < g_c_MaxSize; i++)							// Fills up the vector of Vehicle*
 	{		
 		switch (rand() % 4)
 		{
@@ -69,13 +69,13 @@ int main()
 		}
 	}
 
-	for (auto pObj : vVeh)
+	for (auto pObj : vVeh)						//Displays all
 	{
 		cout << endl;
 		pObj->Display();
 	}
 
-	while (!vVeh.empty())
+	while (!vVeh.empty())						// cleans up the objects at memory
 	{
 		delete vVeh.back();
 		vVeh.pop_back();
