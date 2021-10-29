@@ -1,5 +1,6 @@
 #include "item.h"
 
+
 Item::Item(const double weight_, const double price_)
     : _weight(weight_),
     _price(price_)
