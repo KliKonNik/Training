@@ -9,14 +9,18 @@ int getRandom(int rangeMin, int rangeMax)
     return random(randomGenerator);
 }
 
-void displayVector(const vector<int> v)
+void displayVector(const vector<int> v, bool sorted)
 {
-    cout << endl;
-
-    for (auto elem : v)
+    if (SIZE <= 20)
     {
-        cout << elem << ' ';
-    }
+        cout << "\n" << (sorted ? "Sorted" : "Original") << " Vector : ";
+        cout << endl;
 
-    cout << endl;
+        for (auto elem : v)
+        {
+            cout << elem << ' ';
+        }
+
+        cout << endl;
+    }
 }
