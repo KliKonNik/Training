@@ -13,77 +13,77 @@ int main(int argc, char* argv)
     Queue<char> q;
     Queue<char> t;
 
-    //for (int i{ 0 }; i < 10; ++i)
-    //{
-    //    q.push('A' + i);
-    //    t.push('a' + 2 * i);
-    //    t.push('a' + 2 * i + 1);
-    //}
+    for (int i{ 0 }; i < 10; ++i)
+    {
+        q.push('A' + i);
+        t.push('a' + 2 * i);
+        t.push('a' + 2 * i + 1);
+    }
 
-    //cout << "q (" << q.size() << "): " << q.front() << " - " << q.back() << endl;
-    //cout << "t (" << t.size() << "): " << t.front() << " - " << t.back() << endl;
+    cout << "q (" << q.size() << "): " << q.front() << " - " << q.back() << endl;
+    cout << "t (" << t.size() << "): " << t.front() << " - " << t.back() << endl;
 
-    //q.swap(t);
+    q.swap(t);
 
-    //cout << "q (" << q.size() << "): " << q.front() << " - " << q.back() << endl;
-    //cout << "t (" << t.size() << "): " << t.front() << " - " << t.back() << endl;
+    cout << "q (" << q.size() << "): " << q.front() << " - " << q.back() << endl;
+    cout << "t (" << t.size() << "): " << t.front() << " - " << t.back() << endl;
 
-    //cout << "q: ";
-    //while (!q.empty())
-    //{
-    //    cout << q.front();
-    //    q.pop();
-    //}
+    cout << "q: ";
+    while (!q.empty())
+    {
+        cout << q.front();
+        q.pop();
+    }
 
-    //cout << "\nt: ";
-    //while (!t.empty())
-    //{
-    //    cout << t.front();
-    //    t.pop();
-    //}
+    cout << "\nt: ";
+    while (!t.empty())
+    {
+        cout << t.front();
+        t.pop();
+    }
 
-    //cout << "\nCompare:\n\tEmpty, q != t: " << (q != t) << endl;
+    cout << "\nCompare:\n\tEmpty, q != t: " << (q != t) << endl;
 
-    //for (int i{ 0 }; i < 4; ++i)
-    //{
-    //    q.push('A' + i);
-    //    t.push('A' + i);
-    //}
+    for (int i{ 0 }; i < 4; ++i)
+    {
+        q.push('A' + i);
+        t.push('A' + i);
+    }
 
-    //cout << "\tEqual, q != t: " << (q != t) << endl;
+    cout << "\tEqual, q != t: " << (q != t) << endl;
 
-    //q.pop();
+    q.pop();
 
-    //cout << "\tq is shorter, q != t: " << (q != t) << endl;
+    cout << "\tq is shorter, q != t: " << (q != t) << endl;
 
-    //q.push('B');
+    q.push('B');
 
-    //cout << "\tq has the last symbol unequal, q != t: " << (q != t) << endl;
+    cout << "\tq has the last symbol unequal, q != t: " << (q != t) << endl;
 
-    //for (int i{ 0 }; i < 5; ++i)
-    //{
-    //    q.push('A' + i);
-    //}
+    for (int i{ 0 }; i < 5; ++i)
+    {
+        q.push('A' + i);
+    }
 
-    //Queue<char> r(q);
+    Queue<char> r(q);
 
-    //cout << "\nr: ";
-    //while (!r.empty())
-    //{
-    //    cout << r.front();
-    //    r.pop();
-    //}
+    cout << "\nr: ";
+    while (!r.empty())
+    {
+        cout << r.front();
+        r.pop();
+    }
 
-    //r = q;
-    //r = q;
-    //r = r;
+    r = q;
+    r = q;
+    r = r;
 
-    //cout << "\nr: ";
-    //while (!r.empty())
-    //{
-    //    cout << r.front();
-    //    r.pop();
-    //}
+    cout << "\nr: ";
+    while (!r.empty())
+    {
+        cout << r.front();
+        r.pop();
+    }
 
     for (int i{ 0 }; i < 5; ++i)
     {
@@ -94,6 +94,7 @@ int main(int argc, char* argv)
 
     cout << s->back();
 
+    //delete s;
     s->Queue<char>::~Queue();
 
     cout << endl;
